@@ -4,13 +4,14 @@ export default function BookBrowser() {
   const [books, setBooks] = useState([])
   async function fetchBooks() {
     const response = await fetch(`http://127.0.0.1:7000/books`)
+    
     const data = await response.json()
     setBooks(data)
   }
   useEffect(() => {
     fetchBooks()
   }, []) //run once on page load
-  
+
   return (
     <ul>
       {books.map(book => (

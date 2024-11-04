@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors')
 const { fileAuth } = require('./auth');
 const booksRouter = require('./routes/books');
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.post('/login', (req, res) => {
 
