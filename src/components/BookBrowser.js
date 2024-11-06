@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import './BookBrowser.css'
 
 export default function BookBrowser() {
   const [books, setBooks] = useState([])
@@ -15,12 +17,13 @@ export default function BookBrowser() {
   return (
     <ul>
       {books.map(book => (
-        <li key={book.id}>
+        <li className="browserBook" key={book.id}>
           <h2>{book.title}</h2>
-          <h2>{book.author}</h2>
-          <h2>{book.description}</h2>
-          <h2>{book.publicationDate}</h2>
-          <h2>{book.coverImage}</h2>
+          <img src={book.coverImage} />
+          <p>{book.author}</p>
+          <p>{book.description}</p>
+          <p>{book.publicationDate}</p>
+          <br /><Link to={`/details/${book.id}`}>View Details</Link>
         </li>
       ))}
     </ul>

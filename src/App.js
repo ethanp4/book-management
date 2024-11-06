@@ -4,15 +4,21 @@ import BookBrowser from './components/BookBrowser';
 import BookDetails from './components/BookDetails';
 import LoginPage from "./components/LoginPage";
 
+function Header() {
+  return(
+    <header>
+      <Link to="/">All Books </Link>
+      <Link to="/login">Login</Link>
+    </header>
+  )
+}
+
 function App() {
   return (
     <BrowserRouter>
-      <Link to="/">All Books</Link>
-      <Link to="/login">Login</Link>
+      <Header />
       <Routes>
-        <Route path="/" element={<BookBrowser/>}/>
-        {/* a book object or id can be passed into the book
-        details component once a book is clicked */}
+        <Route index element={<BookBrowser/>}/>
         <Route path="/details/:id" element={<BookDetails/>}/> 
         <Route path="/login" element={<LoginPage/>}/>
       </Routes>

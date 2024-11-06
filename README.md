@@ -1,1 +1,1 @@
-Launch the backend by running ``node ./Backend/server.js`` then launch the frontend by running npm start
+Launch the backend by running ``node ./Backend/server.js`` then launch the frontend by running ``npm start``
