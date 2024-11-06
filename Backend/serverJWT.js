@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const { fileAuth, generateJWT } = require('./auth');
 const booksRouter = require('./routes/booksJWT');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 app.post('/login', (req, res) => {
 
