@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<BookBrowser/>}/>
         {/* a book object or id can be passed into the book
         details component once a book is clicked */}
-        <Route path="/details" element={<BookDetails/>}/> 
+        <Route path="/details/:id" element={<BookDetails/>}/> 
         <Route path="/login" element={<LoginPage/>}/>
       </Routes>
     </BrowserRouter>
