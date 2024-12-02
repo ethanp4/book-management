@@ -1,31 +1,51 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import './BookBrowser.css'
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import './BookDetails.css'
 
-export default function BookBrowser() {
-  const [books, setBooks] = useState([])
-  async function fetchBooks() {
-    const response = await fetch(`http://127.0.0.1:7000/books`)
+function BookDetails() {
+    const { id } = useParams();
+    const [book, setBook] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const navigate = useNavigate();
     
-    const data = await response.json()
-    setBooks(data)
-  }
-  useEffect(() => {
-    fetchBooks()
-  }, []) //run once on page load
+    async function fetchBook() {
+        const response = await fetch(`http://127.0.0.1:7000/books/${id}`);
+        const data = await response.json();
+        setBook(data);
+    }
 
-  return (
-    <ul>
-      {books.map(book => (
-        <li className="browserBook" key={book.id}>
-          <h2>{book.title}</h2>
-          <img src={book.coverImage} />
-          <p>{book.author}</p>
-          <p>{book.description}</p>
-          <p>{book.publicationDate}</p>
-          <br /><Link to={`/details/${book.id}`}>View Details</Link>
-        </li>
-      ))}
-    </ul>
-  )
+    async function deleteBook(){
+        if (window.confirm("Are you sure you want to delete this book?")) {
+            await fetch(`http://127.0.0.1:7000/books/${id}`, {
+                method: "DELETE",
+            });
+            navigate("/");
+        }
+    }
+    
+    useEffect(() => {
+        fetchBook();
+    }, [id]);
+
+    if (!book) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="bookdetails"> 
+            <img src={book.coverImage} alt={book.title} />
+            <h2>{book.title}</h2>
+            <p className="author">{book.author}</p>
+            <p className="publishedDate">Published: {book.publicationDate}</p>
+            <p className="description">{book.description}</p>
+            {isAdmin && (
+                <div className = "adminSection">
+                    <button onClick = {() => navigate(`/editbook/${id}`)}>Edit Book Details</button>
+                    <button onClick = {deleteBook}>Delete Book</button>
+                </div>
+            )}
+        </div>
+    );
 }
+
+export default BookDetails;
