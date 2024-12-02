@@ -1,6 +1,13 @@
-
 import './LoginPage.css';
+import {useNavigate} from 'react-router-dom';
+
 export default function LoginPage() {
+ const navigatetoBookBrowser = useNavigate();
+ 
+ function Navigate(){
+    navigatetoBookBrowser('/'); // Navigates to the book browser page 
+  }
+
     return (<div>
         <h3> Bow Valley Library System Admin Login </h3>
         <br />
@@ -15,7 +22,7 @@ export default function LoginPage() {
             <input type="password" name="password" />
             <br />
             <br />
-            <button> Login </button>
+            <button onClick={Navigate()}> Login </button>
         </form>
     </div>);
 }
