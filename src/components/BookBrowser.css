@@ -1,16 +1,13 @@
 .bookContainer {
   display: grid;
   gap: 10px;
+  padding: 5px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   background-color: aliceblue;
 }
 .browserBook {
   position: relative;
   background-color: silver;
-  /* background-color: aliceblue; */
-  /* width: 300px; */
-  /* height: 300px; */
-  /* border: 2px solid aqua; */
 }
 header {
   background-color: rgb(112, 112, 112);
@@ -18,14 +15,11 @@ header {
 .browserBook img {
   float:left;
   height: 100px;
-  /* margin: 10px; */
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
 }
-
 .browserBook h4, .browserBook p {
-  /* border: 2px solid green; */
   margin:0px;
 }
 
