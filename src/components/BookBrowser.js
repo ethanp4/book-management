@@ -6,7 +6,6 @@ export default function BookBrowser() {
   const [books, setBooks] = useState([])
   async function fetchBooks() {
     const response = await fetch(`http://127.0.0.1:7000/books`)
-    
     const data = await response.json()
     setBooks(data)
   }
@@ -15,17 +14,17 @@ export default function BookBrowser() {
   }, []) //run once on page load
 
   return (
-    <ul>
+    <div className="bookContainer">
       {books.map(book => (
-        <li className="browserBook" key={book.id}>
-          <h2>{book.title}</h2>
+        <div className="browserBook" key={book.id}>
           <img src={book.coverImage} />
+          <h4>{book.title}</h4>
           <p>{book.author}</p>
           <p>{book.description}</p>
-          <p>{book.publicationDate}</p>
-          <br /><Link to={`/details/${book.id}`}>View Details</Link>
-        </li>
+          <p className="publicationDate">{new Date(book.publicationDate).toLocaleDateString('en-CA', {year: 'numeric', month: "short", day: "numeric"})}</p>
+          <br /><Link className="detailsLink" to={`/details/${book.id}`}>View Details</Link>
+        </div>
       ))}
-    </ul>
+    </div>
   )
 }
