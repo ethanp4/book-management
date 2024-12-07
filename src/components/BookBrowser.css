@@ -1,0 +1,9 @@
+.browserBook {
+  height: 250px;
+}
+
+.browserBook img {
+  float:left;
+  height: 200px;
+  margin-right: 20px;
+}
