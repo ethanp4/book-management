@@ -1,18 +1,14 @@
+
 body{
     background-color:  white;
 }
 
-.LoginPage label{
+.loginDiv label{
     font-size: 18px;
     margin-left: 30%;
 }
 
-.LoginPage h2{
-    color: darkblue;
-    margin-left: 20%;
-}
-
-.LoginPage{
+.loginDiv{
     margin-top: 2%;
     margin-left: 20%;
     width: 50%;
@@ -22,7 +18,7 @@ body{
 }
 
 
-.LoginPage input{
+.loginDiv input{
     border: none;
     width: 200px;
     height: 30px;
@@ -30,7 +26,7 @@ body{
 }
 
 
-.LoginPage button{
+.loginDiv button{
     color: white;
     background-color: black;
     border-radius: 6px;
@@ -38,3 +34,14 @@ body{
     height: 40px;
     margin-left: 60%;
 }
+
+.loginDiv h3 {
+    text-align: center;
+    color: darkblue;
+}
+
+.loginDiv table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
