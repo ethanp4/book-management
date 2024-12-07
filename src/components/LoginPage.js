@@ -1,28 +1,29 @@
 import './LoginPage.css';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
- const navigatetoBookBrowser = useNavigate();
- 
- function Navigate(){
-    navigatetoBookBrowser('/'); // Navigates to the book browser page 
-  }
 
-    return (<div>
-        <h3> Bow Valley Library System Admin Login </h3>
+    const navigatetoBookBrowser = useNavigate();
+
+    async function Authentication() {
+    navigatetoBookBrowser('/'); // If the login is successsful, navigate to the book browser page  
+    }
+
+    return (<div className="LoginPage">
+        <h2> Bow Valley Library System Admin Login </h2>
         <br />
         <br />
         <br />
-        <form>
+        <form onSubmit={Authentication}>
             <label> UserName: </label>
-            <input type="text" name="username" />
+            <input type="text" name="username"  required />
             <br />
             <br />
             <label> Password: </label>
-            <input type="password" name="password" />
+            <input type="password" name="password"  required />
             <br />
             <br />
-            <button onClick={Navigate()}> Login </button>
+            <button type="submit"> Login </button>
         </form>
     </div>);
 }
