@@ -1,3 +1,9 @@
 a:hover {
   background-color:antiquewhite;
 }
+
+.logout {
+  position: fixed;
+  top: 0;
+  right: 0;
+}

@@ -1,26 +1,8 @@
-body{
-    background-color: silver;
+.loginDiv h3 {
+    text-align: center;
 }
 
-label{
-    margin-left: 40%;
-}
-h3{
-    margin-left: 40%;
-}
-
-input{
-    border: none;
-    width: 200px;
-    height: 30px;
-    border-radius: 6px;
-}
-
-button{
-    color: white;
-    background-color: black;
-    border-radius: 6px;
-    width: 80px;
-    height: 40px;
-    margin-left: 52%;
+.loginDiv table {
+    margin-left: auto;
+    margin-right: auto;
 }
