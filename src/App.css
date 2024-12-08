@@ -1,5 +1,19 @@
 a:hover {
-  background-color:antiquewhite;
+  color: lightgray;
+}
+
+header{
+  height: 40px;
+  text-align: center;
+  padding-top:10px;
+}
+
+.link{
+  margin: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }
 
 .logout {

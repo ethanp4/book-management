@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import './AddEditBook.css'
 
 export default function EditBook() {
     const { id } = useParams();
@@ -12,12 +13,14 @@ export default function EditBook() {
     }); 
     const navigate = useNavigate();
 
+    async function fetchBook() {
+        const response = await fetch(`http://127.0.0.1:7000/books/${id}`);
+        const data = await response.json();
+        setBook(data);
+    }
+
     useEffect(() => {
-        async function fetchBook() {
-            const response = await fetch(`http:127.0.0.1:7000/books/${id}`);
-            const data = await response.json();
-            setBook(data);
-        }
+        fetchBook();
     }, [id]);
 
     const handleChange = (e) => {
@@ -38,38 +41,50 @@ export default function EditBook() {
 
         if (response.ok) {
             alert("Book updated successfully!");
-            navigate(`/book/${id}`);
+            navigate(`/details/${id}`);
         } else {
             alert("Failed to update the book. Please try again.");
         }
     };
 
+    if (!book) {
+        return <div>Loading...</div>
+    }
+
     return(
         <div className = "editBook">
             <h2>Edit Book</h2>
             <form>
-            <div className="form-group"> {/* editing the title */}
-                    <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" name="title" value={book.title} onChange={handleChange} required />
+                <div className="bookForm">
+                    <div className="Side1">
+                        <div> {/* editing the title */}
+                            <label htmlFor="title">Title:</label>
+                            <input type="text" className="textarea" id="title" name="title" value={book.title} onChange={handleChange} required />
+                        </div>
+                        <div> {/* editing the author */}
+                            <label htmlFor="author">Author:</label>
+                            <input type="text" className="textarea" id="author" name="author" value={book.author}  onChange={handleChange} required />
+                        </div>
+                        <div> {/* editing the publication date */}
+                            <label htmlFor="publicationDate">Publication Date:</label>
+                            <input type="date" className="textarea" id="publicationDate" name="publicationDate" value={book.publicationDate} onChange={handleChange} required />
+                        </div>
+                        <div> {/* editing the cover image */}
+                            <label htmlFor="coverImage">Cover Image URL:</label>
+                            <input type="url" className="textarea" id="coverImage" name="coverImage" value={book.coverImage} onChange={handleChange} />
+                        </div>
+                    </div>
+                    <div className="Side2">
+                        <div> {/* editing the description */}
+                            <label htmlFor="description">Description:</label>
+                            <textarea id="description" className="descriptionText" name="description" value={book.description} onChange={handleChange} rows="4" required></textarea>
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group"> {/* editing the author */}
-                    <label htmlFor="author">Author:</label>
-                    <input type="text" id="author" name="author" value={book.author}  onChange={handleChange} required />
+                <div className="buttonDiv">
+                    <button className="cancelButton" type="button"  onClick={() => navigate(`/details/${id}`)}>Cancel</button>
+                    <button className="submitButton" type="submit" onClick={handleSubmit}>Save Changes</button>
                 </div>
-                <div className="form-group"> {/* editing the publication date */}
-                    <label htmlFor="publicationDate">Publication Date:</label>
-                    <input type="date" id="publicationDate" name="publicationDate" value={book.publicationDate} onChange={handleChange} required />
-                </div>
-                <div className="form-group"> {/* editing the description */}
-                    <label htmlFor="description">Description:</label>
-                    <textarea id="description" name="description" value={book.description} onChange={handleChange} rows="4" required></textarea>
-                </div>
-                <div className="form-group"> {/* editing the cover image */}
-                    <label htmlFor="coverImage">Cover Image URL:</label>
-                    <input type="url" id="coverImage" name="coverImage" value={book.coverImage} onChange={handleChange} />
-                </div>
-                <button type="submit" className="save-button" onClick={handleSubmit}>Save Changes</button>
-                <button type="button" className="cancel-button"  onClick={() => navigate(`/book/${id}`)}>Cancel</button>
             </form>
         </div>
     ) 

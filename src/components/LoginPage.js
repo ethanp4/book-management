@@ -1,6 +1,5 @@
 import { useContext, useReducer, useRef, useState } from 'react';
 import './LoginPage.css';
-import { useNavigate } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import { LoginContext } from './LoginProvider';
 
@@ -24,7 +23,7 @@ function loginReducer(state, action) {
 }
 
 export default function LoginPage() {
-    const {isAdmin, setIsAdmin} = useContext(LoginContext)
+    const { isAdmin, setIsAdmin} = useContext(LoginContext)
     const dialog = useRef()
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [loginState, setLogin] = useReducer(loginReducer, initialLoginState); //set up reducer
@@ -67,22 +66,27 @@ export default function LoginPage() {
         <div className='loginDiv'>
             <LoginModal ref={dialog} success={loginSuccessful}/>
             <form onSubmit={(e) => attemptLogin(e)}>
-                <h3>Bow Valley Library System Admin Login</h3>
+                <h2>Bow Valley Library System Admin Login</h2>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <table>
                     <tr>
                         <td><label>Username:</label></td>
-                        <td><input onChange={handleFormChange} type="text" name="username" /></td>
+                        <td><input disabled={isAdmin} onChange={handleFormChange} type="text" name="username" /></td>
                     </tr>
                     <tr>
                         <td><label>Password:</label></td>
-                        <td><input onChange={handleFormChange} type="password" name="password" /></td>
+                        <td><input disabled={isAdmin} onChange={handleFormChange} type="password" name="password" /></td>
                     </tr>
                     <tr>
-                        <td><button type="submit">Login</button></td>
+                        {isAdmin ? (<td>Youre already logged in!</td>) : (<td><button disabled={isAdmin} type="submit">Login</button></td>)}
                     </tr>
                 </table>
             </form>
         </div>
     );
+
 }
 
