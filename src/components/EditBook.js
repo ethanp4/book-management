@@ -13,12 +13,14 @@ export default function EditBook() {
     }); 
     const navigate = useNavigate();
 
+    async function fetchBook() {
+        const response = await fetch(`http://127.0.0.1:7000/books/${id}`);
+        const data = await response.json();
+        setBook(data);
+    }
+
     useEffect(() => {
-        async function fetchBook() {
-            const response = await fetch(`http:127.0.0.1:7000/books/${id}`);
-            const data = await response.json();
-            setBook(data);
-        }
+        fetchBook();
     }, [id]);
 
     const handleChange = (e) => {
@@ -44,6 +46,10 @@ export default function EditBook() {
             alert("Failed to update the book. Please try again.");
         }
     };
+
+    if (!book) {
+        return <div>Loading...</div>
+    }
 
     return(
         <div className = "editBook">

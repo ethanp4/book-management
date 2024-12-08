@@ -23,7 +23,7 @@ function loginReducer(state, action) {
 }
 
 export default function LoginPage() {
-    const {setIsAdmin} = useContext(LoginContext)
+    const { isAdmin, setIsAdmin} = useContext(LoginContext)
     const dialog = useRef()
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [loginState, setLogin] = useReducer(loginReducer, initialLoginState); //set up reducer
@@ -74,14 +74,14 @@ export default function LoginPage() {
                 <table>
                     <tr>
                         <td><label>Username:</label></td>
-                        <td><input onChange={handleFormChange} type="text" name="username" /></td>
+                        <td><input disabled={isAdmin} onChange={handleFormChange} type="text" name="username" /></td>
                     </tr>
                     <tr>
                         <td><label>Password:</label></td>
-                        <td><input onChange={handleFormChange} type="password" name="password" /></td>
+                        <td><input disabled={isAdmin} onChange={handleFormChange} type="password" name="password" /></td>
                     </tr>
                     <tr>
-                        <td><button type="submit">Login</button></td>
+                        {isAdmin ? (<td>Youre already logged in!</td>) : (<td><button disabled={isAdmin} type="submit">Login</button></td>)}
                     </tr>
                 </table>
             </form>
