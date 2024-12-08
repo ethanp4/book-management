@@ -2,14 +2,14 @@ a:hover {
   color: lightgray;
 }
 
-header{
+header {
   height: 40px;
   text-align: center;
   padding-top:10px;
 }
 
-.link{
-  margin: 50px;
+.link, .logout {
+  margin-left: 10px;
   font-size: 20px;
   text-decoration: none;
   color: black;
@@ -18,6 +18,6 @@ header{
 
 .logout {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
 }

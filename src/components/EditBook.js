@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import GenericModal from "./GenericModal";
 import './AddEditBook.css'
 
 export default function EditBook() {
+    const [modalHeader, setModalHeader] = useState('');
+    const [modalDescription, setModalDescription] = useState('');
+    const dialog = useRef()
     const { id } = useParams();
     const [book, setBook] = useState({
         title: "",
@@ -13,12 +17,14 @@ export default function EditBook() {
     }); 
     const navigate = useNavigate();
 
+    async function fetchBook() {
+        const response = await fetch(`http://127.0.0.1:7000/books/${id}`);
+        const data = await response.json();
+        setBook(data);
+    }
+
     useEffect(() => {
-        async function fetchBook() {
-            const response = await fetch(`http:127.0.0.1:7000/books/${id}`);
-            const data = await response.json();
-            setBook(data);
-        }
+        fetchBook();
     }, [id]);
 
     const handleChange = (e) => {
@@ -38,15 +44,23 @@ export default function EditBook() {
         });
 
         if (response.ok) {
-            alert("Book updated successfully!");
-            navigate(`/details/${id}`);
+            setModalHeader("Success");
+            setModalDescription("Book updated successfully!");
+            dialog.current.showModal();
         } else {
-            alert("Failed to update the book. Please try again.");
+            setModalHeader("Error");
+            setModalDescription("Failed to update the book. Please try again.");
+            dialog.current.showModal();
         }
     };
 
+    if (!book) {
+        return <div>Loading...</div>
+    }
+
     return(
         <div className = "editBook">
+            <GenericModal ref={dialog} header={modalHeader} description={modalDescription} redirect={`/details/${id}`} />
             <h2>Edit Book</h2>
             <form>
                 <div className="bookForm">

@@ -23,7 +23,8 @@ function loginReducer(state, action) {
 }
 
 export default function LoginPage() {
-    const { setIsAdmin } = useContext(LoginContext)
+    const { isAdmin, setIsAdmin} = useContext(LoginContext)
+
     const dialog = useRef()
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [loginState, setLogin] = useReducer(loginReducer, initialLoginState); //set up reducer
@@ -87,6 +88,7 @@ export default function LoginPage() {
                     </table>
                 </form>
             </div>
+
         </div>
     );
 

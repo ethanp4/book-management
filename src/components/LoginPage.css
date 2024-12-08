@@ -1,15 +1,21 @@
 
+body{
+margin: 0px;
+padding: 0px;
+}
+
 .LoginPage{
     background-color:  aliceblue;
     height: 1000px;
 }
+
 
 .loginDiv label{
     font-size: 18px;
 }
 
 .loginDiv{
-    margin-top: 1%;
+    margin-top: 50px;
     margin-left: 20%;
     width: 50%;
     height: 300px;
@@ -35,6 +41,10 @@
     margin-top: 5px;
     margin-left: 250%;
     
+}
+
+.loginDiv button:disabled {
+    background-color: gray;
 }
 
 .loginDiv h2 {
