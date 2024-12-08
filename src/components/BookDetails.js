@@ -41,8 +41,8 @@ function BookDetails() {
             <p className="description">{book.description}</p>
             {isAdmin && (
                 <div className = "adminSection">
-                    <button onClick = {() => navigate(`/editbook/${id}`)}>Edit Book Details</button>
-                    <button onClick = {deleteBook}>Delete Book</button>
+                    <button className="editButton" onClick = {() => navigate(`/editbook/${id}`)}>Edit Book Details</button>
+                    <button className="deleteButton" onClick = {deleteBook}>Delete Book</button>
                 </div>
             )}
         </div>

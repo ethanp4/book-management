@@ -1,0 +1,107 @@
+/*  -----===== BOTH PAGES =====-----    */
+.bookForm {
+    background-color: rgb(231, 231, 231);
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.Side1 {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    text-align: right;
+}
+
+.Side2 {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    text-align: left;
+}
+
+.buttonDiv{
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.textarea {
+    width: 200px;
+    margin: 15px 0;
+    padding: 3px;
+}
+
+.descriptionText{
+    width: 98%;
+    height: 180px;
+}
+
+.cancelButton:hover{
+    color:white;
+    background-color: rgb(136, 0, 0);
+}
+
+.submitButton:hover{
+    color: white;
+    background-color: rgb(0, 71, 0);
+}
+
+
+
+
+
+/*  -----===== ADD BOOK CSS =====-----  */
+.NewBookForm {
+    background-color: aliceblue;
+}
+
+.NewBookForm h2 {
+    text-align: center;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.NewBookForm label {
+    margin-right: 10px;
+}
+
+.NewBookForm button {
+    margin: 20px;
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+
+
+
+
+/*  -----===== EDIT BOOK PAGE =====-----    */
+.editBook{
+    background-color: aliceblue;
+}
+
+.editBook h2{
+    text-align: center;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.editBook label {
+    margin-right: 10px;
+}
+
+.editBook button {
+    margin: 20px;
+    width: 120px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
