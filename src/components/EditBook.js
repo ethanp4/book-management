@@ -17,8 +17,10 @@ export default function EditBook() {
     }); 
     const navigate = useNavigate();
 
+    const [notOk, setNotOk] = useState(false);
     async function fetchBook() {
         const response = await fetch(`http://127.0.0.1:7000/books/${id}`);
+        setNotOk(!response.ok)
         const data = await response.json();
         setBook(data);
     }
@@ -56,6 +58,14 @@ export default function EditBook() {
 
     if (!book) {
         return <div>Loading...</div>
+    }
+
+    if (notOk) {
+        return (
+            <div>
+                <h2 style={{textAlign: "center"}}>Book not found</h2>
+            </div>
+        )
     }
 
     return(
