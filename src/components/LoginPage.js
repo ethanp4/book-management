@@ -1,6 +1,5 @@
 import { useContext, useReducer, useRef, useState } from 'react';
 import './LoginPage.css';
-import { useNavigate } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import { LoginContext } from './LoginProvider';
 
@@ -24,7 +23,7 @@ function loginReducer(state, action) {
 }
 
 export default function LoginPage() {
-    const {isAdmin, setIsAdmin} = useContext(LoginContext)
+    const {setIsAdmin} = useContext(LoginContext)
     const dialog = useRef()
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [loginState, setLogin] = useReducer(loginReducer, initialLoginState); //set up reducer

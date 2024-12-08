@@ -4,6 +4,8 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import BookBrowser from './components/BookBrowser';
 import BookDetails from './components/BookDetails';
 import LoginPage from "./components/LoginPage";
+import EditBook from "./components/EditBook";
+
 import { LoginContext, LoginProvider } from './components/LoginProvider';
 import { useContext } from 'react';
 
@@ -28,6 +30,7 @@ function App() {
           <Route index element={<BookBrowser/>}/>
           <Route path="/details/:id" element={<BookDetails/>}/> 
           <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/editbook/:id" element={<EditBook/>}/>
         </Routes>
       </BrowserRouter>
     </LoginProvider>

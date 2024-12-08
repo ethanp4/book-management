@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import {LoginContext} from './LoginProvider';
 import './BookDetails.css'
 
 function BookDetails() {
     const { id } = useParams();
     const [book, setBook] = useState(null);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const { isAdmin } = useContext(LoginContext); // Access isAdmin from the context
     const navigate = useNavigate();
     
     async function fetchBook() {
