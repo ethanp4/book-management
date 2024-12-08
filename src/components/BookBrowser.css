@@ -8,6 +8,7 @@
 .browserBook {
   position: relative;
   background-color: silver;
+  border-radius: 3px;
 }
 header {
   background-color: rgb(112, 112, 112);
@@ -21,12 +22,13 @@ header {
 }
 .browserBook h4, .browserBook p {
   margin:0px;
+  margin-left: 4px;
 }
 
 .detailsLink {
   position: absolute;
   bottom: 0;
-  right: 2px; 
+  right: 4px; 
 }
 .publicationDate {
   position: absolute;
@@ -34,21 +36,21 @@ header {
 }
 
 .searchBar {
-  margin: 10px 50px 10px 30px;
+  margin-left: 10px;
   padding: 8px;
-  width: 50%;
+  width: 40%;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 } 
 
 .btnAddBook {
-    margin: 20px;
-    width: 150px;
-    height: 35px;
-    background-color: white;
-    border: 1px solid lightgray;
-    border-radius: 5px;
+  margin: 10px;
+  width: 150px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 .btnAddBook:hover {
