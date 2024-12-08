@@ -76,15 +76,14 @@ export default function LoginPage() {
                     <table>
                         <tr>
                             <td><label>Username:</label></td>
-                            <td><input onChange={handleFormChange} type="text" name="username" /></td>
+                            <td><input disabled={isAdmin} onChange={handleFormChange} type="text" name="username" /></td>
                         </tr>
                         <tr>
                             <td><label>Password:</label></td>
-                            <td><input onChange={handleFormChange} type="password" name="password" /></td>
+                            <td><input disabled={isAdmin} onChange={handleFormChange} type="password" name="password" /></td>
                         </tr>
                         <tr>
-                            <td><button type="submit">Login</button></td>
-                        </tr>
+                        {isAdmin ? (<td>Youre already logged in!</td>) : (<td><button disabled={isAdmin} type="submit">Login</button></td>)}</tr>
                     </table>
                 </form>
             </div>
