@@ -1,6 +1,7 @@
 
-body{
-    background-color:  white;
+.LoginPage{
+    background-color:  aliceblue;
+    height: 1000px;
 }
 
 .loginDiv label{

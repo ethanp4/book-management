@@ -23,7 +23,7 @@ function loginReducer(state, action) {
 }
 
 export default function LoginPage() {
-    const {setIsAdmin} = useContext(LoginContext)
+    const { setIsAdmin } = useContext(LoginContext)
     const dialog = useRef()
     const [loginSuccessful, setLoginSuccessful] = useState(false);
     const [loginState, setLogin] = useReducer(loginReducer, initialLoginState); //set up reducer
@@ -63,28 +63,30 @@ export default function LoginPage() {
         })
     }
     return (
-        <div className='loginDiv'>
-            <LoginModal ref={dialog} success={loginSuccessful}/>
-            <form onSubmit={(e) => attemptLogin(e)}>
-                <h2>Bow Valley Library System Admin Login</h2>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <table>
-                    <tr>
-                        <td><label>Username:</label></td>
-                        <td><input onChange={handleFormChange} type="text" name="username" /></td>
-                    </tr>
-                    <tr>
-                        <td><label>Password:</label></td>
-                        <td><input onChange={handleFormChange} type="password" name="password" /></td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Login</button></td>
-                    </tr>
-                </table>
-            </form>
+        <div className='LoginPage'>
+            <div className='loginDiv'>
+                <LoginModal ref={dialog} success={loginSuccessful} />
+                <form onSubmit={(e) => attemptLogin(e)}>
+                    <h2>Bow Valley Library System Admin Login</h2>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td><label>Username:</label></td>
+                            <td><input onChange={handleFormChange} type="text" name="username" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password:</label></td>
+                            <td><input onChange={handleFormChange} type="password" name="password" /></td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit">Login</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
     );
 
