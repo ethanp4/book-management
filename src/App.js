@@ -33,6 +33,7 @@ function App() {
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/editbook/:id" element={<EditBook/>}/>
           <Route path="/addbook" element={<AddNewBook/>}/>
+          <Route path="*" element={<div style={{textAlign: "center", fontSize: "x-large"}}><br/>404 - Page not found</div>}/>
         </Routes>
       </BrowserRouter>
     </LoginProvider>
